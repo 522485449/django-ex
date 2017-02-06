@@ -18,4 +18,13 @@ class Migration(migrations.Migration):
                 ('timestamp', models.DateTimeField(auto_now_add=True)),
             ],
         ),
+        migrations.CreateModel(
+            name='Preference',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', auto_created=True, serialize=False, primary_key=True)),
+                ('key', models.CharField(max_length=64)),
+                ('value', models.CharField(max_length=64)),
+                ('timestamp', models.DateTimeField(auto_now_add=True)),
+            ],
+        ),
     ]
