@@ -13,14 +13,16 @@ def index(request):
 
     PageView.objects.create(hostname=hostname)
     PageView(hostname='3').save()
+    string=''
     for pageview in (PageView.objects.all()):
         open(r'welcome\templates\welcome\index.html','a').write('<p/>'+pageview.__str__())
-
-    return render(request, 'welcome/index.html', {
-        'hostname': hostname,
-        'database': database.info(),
-        'count': PageView.objects.count()
-    })
+        string+=pageview.__str__()+'\r\n <p/>'
+    # return render(request, 'welcome/index.html', {
+    #     'hostname': hostname,
+    #     'database': database.info(),
+    #     'count': PageView.objects.count()
+    # })
+    return HttpResponse("Hello NowaMagic"+string)
 
 def health(request):
     return HttpResponse(PageView.objects.count())
